@@ -1,0 +1,119 @@
+Первая часть первого  ДЗ  ))
+Linux terminal (GitBash) commands
+
+1) Посмотреть где я. 	pwd 
+2) Создать папку. 	mkdir d1 d2 d3 d4 
+3) Зайти в папку. 	cd d1
+4) Создать 3 папки 	mkdir 1 2 3
+5) Зайти в любую папку 	cd 1
+6) Создать 5 файлов (3 txt, 2 json)
+			touch funny.txt bunny.txt money.txt first.json second.json
+7) Создать 3 папки	mkdir five six seven
+8) Вывести список содержимого папки
+			ls -la	
+total 4
+drwxr-xr-x 1 PC 197121 0 Jun 12 23:14 ./
+drwxr-xr-x 1 PC 197121 0 Jun 12 23:02 ../
+-rw-r--r-- 1 PC 197121 0 Jun 12 23:13 bunny.txt
+-rw-r--r-- 1 PC 197121 0 Jun 12 23:13 first.json
+drwxr-xr-x 1 PC 197121 0 Jun 12 23:14 five/
+-rw-r--r-- 1 PC 197121 0 Jun 12 23:13 funny.txt
+-rw-r--r-- 1 PC 197121 0 Jun 12 23:13 money.txt
+-rw-r--r-- 1 PC 197121 0 Jun 12 23:13 second.json
+drwxr-xr-x 1 PC 197121 0 Jun 12 23:14 seven/
+drwxr-xr-x 1 PC 197121 0 Jun 12 23:14 six/
+9) + Открыть любой txt файлfi	vim bunny.txt
+10) + написать туда что-нибудь, любой текст.
+	i ( запускаем Insert, режим редактирования)
+	1) first name
+	2) second name
+11) + сохранить и выйти.
+	ESC :wq or :x 
+12) Выйти из папки на уровень выше
+	cd .. 
+13) переместить любые 2 файла, которые вы создали
+	mv 1/bunny.json 2/bunny.json
+	mv 1/first.json 2/firstrename.json
+14) скопировать любые 2 файла, которые вы создали, в любую другую папку.
+	cp 1/money.txt 2/money.txt
+	cp 1/funny.txt 3/funny.txt
+15) Найти файл по имени
+	find -type f -iname "*name.json"
+./2/firstrename.json
+16) просмотреть содержимое в реальном времени (команда grep) изучите как она работает.
+	tail -f 2/bunny.txt 
+Запустит в терминале данный файл, если нужно найти в нем что-либо определенное,
+тогда уже надо добавить grep
+17) вывести несколько первых строк из текстового файла
+	head -n 5 2/bunny.txt
+18) вывести несколько последних строк из текстового файла
+	tail -n 5 2/bunny.txt
+19) просмотреть содержимое длинного файла (команда less) изучите как она работает.
+	less -c 2/bunny.txt (:wq для выхода)
+20) вывести дату и время
+	date
+==================================================================================
+
+Задание *
+1) Отправить http запрос на сервер. http://162.55.220.72:5005/terminal-hw-request
+5005 порт 404 ошибка, 5006 пропускает
+	1 запрос
+$ curl -i -X options http://162.55.220.72:5006/terminal-hw-request
+HTTP/1.0 200 OK
+Content-Type: text/html; charset=utf-8
+Allow: GET, HEAD, OPTIONS
+Content-Length: 0
+Server: Werkzeug/2.0.1 Python/3.8.10
+Date: Tue, 13 Jun 2023 18:53:46 GMT
+
+	Get method
+$ curl -i -X get http://162.55.220.72:5006/terminal-hw-request
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 283
+Server: Werkzeug/2.0.1 Python/3.8.10
+Date: Tue, 13 Jun 2023 18:54:10 GMT
+
+{
+  "Intro": "Hello!! This is your the first response from server",
+  "Tasks": {
+    "Task_1": "Send the next URL in terminal: http://162.55.220.72:5005/get_meth
+od?name=(set_your_String)&age=(set_your_number)",
+    "result": [
+      "Your_String",
+      "Your_number"
+    ]
+  }
+}
+
+curl -i -X get "http://162.55.220.72:5006/get_method?name=(Pavel)&age=(34)"
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 27
+Server: Werkzeug/2.0.1 Python/3.8.10
+Date: Fri, 16 Jun 2023 08:50:34 GMT
+
+[
+  "(Pavel)",
+  "(34)"
+]
+
+================================================================================
+2) Написать скрипт который выполнит автоматически пункты 3, 4, 5, 6, 7, 8, 13
+	создаем script
+#!/bin/bash
+cd d1
+mkdir test1 test2 test3
+cd test1
+touch a.txt b.txt c.txt d.json e.json
+mkdir int1 int2 int3
+ls -la	
+mv ./a.txt ./int1/a.txt | mv ./b.txt ./int1/b.txt
+echo "Ready"
+
+Для его выполнения не обязательно давать файлу какое-либо расширение
+mv ./script ./script.sh если есть графический интерфейс(запуск не в терминале а в Вин)
+кликабельный скрипт 
+для запуска в терминале
+./script нужно установить для него флаг исполняемости chmod ugo+x script 
+если в доступе будет отказано

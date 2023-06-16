@@ -1,0 +1,15 @@
+#!/bin/bash
+cd d1
+echo "Current directory change"
+mkdir test1 test2 test3
+echo "Create 3 new test directory"
+cd test1
+echo "Current directory change"
+touch a.txt b.txt c.txt d.json e.json
+echo "Create 5 new file"
+mkdir int1 int2 int3
+echo "Create 3 internal directory"
+ls -la	
+echo "Display the contents of a directory"
+mv ./a.txt ./int1/a.txt | mv ./b.txt ./int1/b.txt
+echo "2 files moved"
