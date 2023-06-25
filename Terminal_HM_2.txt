@@ -56,13 +56,48 @@ the seConD 2
  17. Выйти из папки inner_dir_1
 	cd ..
  18. Вывести содержимое файла tf_3.txt в терминал.
-	
+	cat ./inner_dir_1/tf_3.txt
+1) First
+2) Second
+3) Third
+the second 2
+the sec 2
+the seCoNd 2
  19. Найти путь к файлу tf_4.txt
+	find -type f -name "tf_4.txt"
+./inner_dir_1/tf_4.txt
  20. Отчистить файл tf_4.txt от содержимого без удаления самого файла.
+	> ./inner_dir_1/tf_4.txt
+	cat /dev/null > ./inner_dir_1/tf_4.txt
+	echo "" > ./inner_dir_1/tf_4.txt
+	cp /dev/null ./inner_dir_1/tf_4.txt
+	truncate -s 0 ./inner_dir_1/tf_4.txt
  21. Найти путь к файлам у которых есть  “tf” в названии.
+	find -type f -name "tf*"
+./inner_dir_1/tf_3.txt
+./inner_dir_1/tf_4.txt
+./tf_1.txt
+./tf_2.txt
+./tf_4.txt
  22. Найти путь к файлам у которых есть  “tf” в названии и буквы в любом регистре.
+	 find -type f -iname "tf*"
+./inner_dir_1/tf_3.txt
+./inner_dir_1/tf_4.txt
+./inner_dir_1/tF_5.txt
+./tf_1.txt
+./tf_2.txt
+./tf_4.txt
  23. Найти строки в файлах где есть комбинация букв “sec” в текущей папке
- 24. Найти строки в файлах где есть комбинация букв “sec” в любом регистре в текущей папке
+	grep -rn --include="*.txt" "sec"
+
+
+
+ 24. Найти строки в файлах где есть комбинация букв “sec” в любом регистре 
+в текущей папке
+
+rg -i customize-control-content -g  
+
+
  25. Найти строки в файлах где есть только комбинация букв “sec” в текущей папке
  26. Найти строки в файлах где есть только комбинация букв “sec” в любом регистре в текущей папке
  27. Найти строки в файлах где есть комбинация букв “second” в текущей папке
