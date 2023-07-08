@@ -130,15 +130,18 @@ var 1 :	затрагивает мейн директорию
 только по txt файлам)
 inner_dir_1/tf_3.txt:the second 2
 tf_2.txt:- the second 2
+
 var 2 :	затрагивает мейн директорию
 	find -mindepth 2 -maxdepth 4 -name "*.txt" | xargs grep sec * ( так же затрагивает и мейн директорию)
 tf_2.txt:- the second 2
 ./inner_dir_1/tf_3.txt:the second 2
+
 var 3 : затрагивает мейн директорию
 	find . -type f -exec grep -l "second" {} + | xargs -I {} grep -l "second" {}
 ./inner_dir_1/tf_3.txt
 ./tf_2.txt
-var 4 : убирает мейн
+
+var 4 : убирает мейн из результата
  	grep -r second ./*/*        (за счет выборки в пути отсеивает текущую папку)
 ./inner_dir_1/tf_3.txt:the second 2
  30. Найти только путь и название файла в строках которых есть комбинация букв “second”
