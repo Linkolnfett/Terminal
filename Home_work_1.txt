@@ -14,7 +14,7 @@
 	mkdir five six seven
 8) Вывести список содержимого папки
 	ls -la	
-9) + Открыть любой txt файлfi	
+9) + Открыть любой txt файл	
 	vim bunny.txt
 10) + написать туда что-нибудь, любой текст.
 	i ( запускаем Insert, режим редактирования)
@@ -50,14 +50,14 @@
 1) Отправить http запрос на сервер. http://162.55.220.72:5005/terminal-hw-request
 5005 порт 404 ошибка, 5006 пропускает
 		
-$ curl -i -X get http://162.55.220.72:5006/terminal-hw-request
+$ curl -i get http://162.55.220.72:5006/terminal-hw-request
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 283
 Server: Werkzeug/2.0.1 Python/3.8.10
 Date: Tue, 13 Jun 2023 18:54:10 GMT
 
-curl -i -X get "http://162.55.220.72:5006/get_method?name=(Pavel)&age=(34)"
+curl -i get "http://162.55.220.72:5006/get_method?name=(Pavel)&age=(34)"
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 27
